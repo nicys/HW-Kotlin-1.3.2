@@ -21,12 +21,10 @@ fun main(args: Array<String>) {
     printResults(fee)
 }
 
-fun calcFee(nameCardAccount: String = "MasterCard", monthAmount: Int = 0, amount: Int): Double {
+fun calcFee(nameCardAccount: String = "VKPay", monthAmount: Int = 0, amount: Int): Double {
     return when (nameCardAccount) {
-        "Visa" -> calcVisaMir(monthAmount, amount)
-        "MIR" -> calcVisaMir(monthAmount, amount)
-        "MasterCard" -> calcVisaMir(monthAmount, amount)
-        "Maestro" -> calcVisaMir(monthAmount, amount)
+        "Visa", "MIR" -> calcVisaMir(monthAmount, amount)
+        "MasterCard", "Maestro" -> calcMasterMaestro(monthAmount, amount)
         "VKPay" -> calcVkPay(monthAmount, amount)
         else -> INVALID_CARD_ACCOUNT
     }
